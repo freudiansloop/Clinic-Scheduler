@@ -1,0 +1,33 @@
+This is wonderful! almost there. Changes:
+
+
+1. In the first tab, For the instructions, replace the text with this: 
+
+INSTRUCTIONS
+
+Active: include in schedule. Target: target number of shifts assigned. Clinic in 1st Half vs 2nd half of month (or no preference). 
+
+Preferred / Avoid dates. Date format examples: 12, 14AM, 15 PM, 3-17. 
+
+Override force assigns those dates. 
+
+
+When writing those, make the following blue font: "Active:", "Target:", "1st Half", "2nd Half", "Preferred / Avoid", "Override" 
+
+
+2. for formats for dates (prefence, avoid, override), allow full date (example "12" for 12 AM or PM), date then shift (either space or nospace, example 13PM or 13 PM), range (example 11-16AM, or 1-2)
+
+
+3. In tab 1, make sure the column labels are over the respective columns. For example, override, color, and del are too far to the right and not lined up with their columns.
+
+
+4. In tabs 3 and 3.5, dont use color formatting for open / closed clinics. Just use light gray for AM (including wednesdays), and dark gray for PM 
+
+
+5. In the exporting file, lets make the following changes. move that json in A80 in sheet 2 to A20 in sheet2. Also put it in A80 on sheet 1. 
+
+
+For sheet 1: In addition, not all of the cells with physician names are colored. Its inconsistent. Furthermore, triple the width of the black bar divider. Also right now every cell in the calendar has a border-that makes it hard to read. Make it default to no cell border. But use a medium thickness line for the borders of the calendar and the borders of each DAY. Decrease the width of each day in the calendar by 20%. Also add 1 empty column to the left of the Group A so theres some buffer room. Make the header (outpatient center-LBJ Group) bold and increase the font size to 16 for the header. Make the "AM clinic" and "PM clinic" bold. 
+
+
+6. In tab 2, for second half of the month starts on. There should also be an option for Automatic, where the program decides where the second half starts on (depending on the number of days in the month). This should be the default selected option. 
