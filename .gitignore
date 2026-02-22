@@ -37,3 +37,5 @@ clinic_env/
 # Local data / user configs
 physician_state.json
 *.xlsx
+
+archive/
