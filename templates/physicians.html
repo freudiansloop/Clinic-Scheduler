@@ -59,20 +59,16 @@
 <div class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-6">
 <!-- Total Physician Stats -->
 <div class="space-y-4">
-<div class="grid grid-cols-1 gap-3">
-<div class="flex flex-col bg-surface-container-low p-3 rounded-xl border border-outline-variant/10">
-<span class="text-[9px] uppercase tracking-widest text-outline font-bold">Listed Physicians</span>
-<span id="total-physicians-stat" class="text-2xl font-black text-on-surface">0</span>
-</div>
-<div class="flex flex-col bg-surface-container-low p-3 rounded-xl border border-outline-variant/10">
-<span class="text-[9px] uppercase tracking-widest text-outline font-bold">Active</span>
-<span id="active-physicians-stat" class="text-2xl font-black text-secondary">0</span>
-</div>
-</div>
-<div class="flex gap-2">
-<button id="export-btn" class="flex-1 px-2 py-1.5 text-[9px] font-bold text-outline hover:text-on-surface border border-outline-variant/20 rounded-lg transition-colors">Export</button>
-<button id="history-btn" class="flex-1 px-2 py-1.5 text-[9px] font-bold text-outline hover:text-on-surface border border-outline-variant/20 rounded-lg transition-colors">History</button>
-</div>
+        <div class="grid grid-cols-1 gap-3">
+            <div class="flex flex-col bg-surface-container-low p-3 rounded-xl border border-outline-variant/10">
+                <span class="text-[9px] uppercase tracking-widest text-secondary font-bold">Active Physicians</span>
+                <span id="active-physicians-stat" class="text-2xl font-black text-secondary">0</span>
+            </div>
+            <div class="flex flex-col bg-surface-container-low p-3 rounded-xl border border-outline-variant/10">
+                <span class="text-[9px] uppercase tracking-widest text-outline font-bold">Listed Physicians</span>
+                <span id="total-physicians-stat" class="text-2xl font-black text-on-surface">0</span>
+            </div>
+        </div>
 </div>
 <!-- Capacity Overview -->
 <div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/10">
@@ -85,10 +81,10 @@
 <div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
 <div id="capacity-bar" class="bg-gradient-to-r from-primary to-secondary h-full transition-all duration-500" style="width: 0%"></div>
 </div>
-<div class="flex justify-between text-[8px] text-outline">
-<span>Targets: <strong id="capacity-targets" class="text-on-surface">0</strong></span>
-<span>Needs: <strong id="capacity-needs" class="text-on-surface">--</strong></span>
-</div>
+                <div class="flex justify-between text-[8px] text-outline">
+                    <span>Physician Target Assigned: <strong id="capacity-targets" class="text-on-surface">0</strong></span>
+                    <span>Total clinic shifts: <strong id="capacity-needs" class="text-on-surface">--</strong></span>
+                </div>
 </div>
 </div>
 <!-- Potential Friction -->
@@ -96,7 +92,7 @@
 <div class="p-4 pb-2">
 <h3 class="text-[9px] font-bold uppercase tracking-widest text-error mb-2">Potential Friction</h3>
 </div>
-<div id="friction-list" class="flex-1 space-y-0.5 max-h-48 overflow-y-auto custom-scrollbar">
+                <div id="friction-list" class="flex-1 min-h-0 space-y-0.5 overflow-y-auto custom-scrollbar border-t border-outline-variant/10">
 <div class="px-4 py-2 text-[9px] text-outline italic">Analyzing roster...</div>
 </div>
 </div>
@@ -144,12 +140,12 @@
 <!-- Desperation Mode Inline -->
 <div class="flex flex-col items-center gap-2">
 <div class="desperation-slider">
-<input checked="" id="mode-off" name="desperation" type="radio"/>
-<label for="mode-off">STAGE 0</label>
-<input id="mode-stage1" name="desperation" type="radio"/>
-<label for="mode-stage1">STAGE 1</label>
-<input id="mode-stage2" name="desperation" type="radio"/>
-<label for="mode-stage2">STAGE 2</label>
+                <input id="mode-off" name="desperation" type="radio"/>
+                <label for="mode-off">STAGE 0</label>
+                <input checked="" id="mode-stage1" name="desperation" type="radio"/>
+                <label for="mode-stage1">STAGE 1</label>
+                <input id="mode-stage2" name="desperation" type="radio"/>
+                <label for="mode-stage2">STAGE 2</label>
 <div class="slider-bg"></div>
 </div>
 <div class="mode-status text-[9px] font-bold tracking-widest uppercase text-primary/80 transition-all">
@@ -168,18 +164,21 @@
 </div>
 <!-- Action Buttons Row -->
 <div class="flex items-center gap-2">
-<button id="undo-btn" class="flex items-center justify-center p-1.5 rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-variant transition-colors" title="Undo">
-<span class="material-symbols-outlined text-lg">undo</span>
-</button>
-<button id="reset-btn" class="px-3 py-1.5 rounded-lg bg-surface-container-highest text-[10px] font-bold text-on-surface hover:bg-surface-variant transition-colors border border-outline-variant/10">
+            <button id="undo-btn" class="flex items-center justify-center p-1.5 rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-variant transition-colors" title="Undo">
+                <span class="material-symbols-outlined text-lg">undo</span>
+            </button>
+            <button id="reset-btn" class="px-3 py-1.5 rounded-lg bg-surface-container-highest text-[10px] font-bold text-on-surface hover:bg-surface-variant transition-colors border border-outline-variant/10">
                 Reset
-              </button>
-<button id="save-btn" class="px-3 py-1.5 rounded-lg bg-primary/10 text-[10px] font-bold text-primary hover:bg-primary/20 transition-colors border border-primary/20">
-                Save Changes
-              </button>
-<button id="clear-dates-btn" class="px-3 py-1.5 rounded-lg bg-error-container/10 text-[10px] font-bold text-error hover:bg-error-container/20 transition-all border border-error/20">
+            </button>
+            <button id="save-btn" class="px-3 py-1.5 rounded-lg bg-primary/10 text-[10px] font-bold text-primary hover:bg-primary/20 transition-colors border border-primary/20">
+                Save
+            </button>
+            <button id="default-btn" class="px-3 py-1.5 rounded-lg bg-surface-container-highest text-[10px] font-bold text-secondary hover:bg-surface-variant transition-colors border border-outline-variant/10">
+                Default
+            </button>
+            <button id="clear-dates-btn" class="px-3 py-1.5 rounded-lg bg-error-container/10 text-[10px] font-bold text-error hover:bg-error-container/20 transition-all border border-error/20">
                 Clear Dates
-              </button>
+            </button>
 </div>
 </div>
 </section>

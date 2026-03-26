@@ -33,14 +33,33 @@ def view_instructions():
 # --- API ROUTES ---
 @app.route("/api/roster", methods=["GET"])
 def get_roster():
+    from scheduler_utils import DEFAULT_ROSTER_DATA, DEFAULT_COLORS
     state_path = os.path.join(get_app_path(), STATE_FILE)
     if os.path.exists(state_path):
         with open(state_path, "r", encoding="utf-8") as f:
             state = json.load(f)
             data = state.get("physicians", [])
+        if not data:
+            data = generate_default_roster(DEFAULT_ROSTER_DATA, DEFAULT_COLORS)
     else:
-        data = []
+        data = generate_default_roster(DEFAULT_ROSTER_DATA, DEFAULT_COLORS)
     return jsonify({"physicians": data, "success": True})
+
+def generate_default_roster(roster_data, colors):
+    return [
+        {
+            "name": name,
+            "target": target,
+            "active": True,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": "",
+            "color": colors.get(name, "#ffffff"),
+            "full_day_ok": True if name in ["Gandhi", "Wesley"] else False
+        }
+        for name, target in roster_data
+    ]
 
 @app.route("/api/roster", methods=["POST"])
 def update_roster():
