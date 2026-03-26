@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% set active_tab = 'instructions' %}
+{% set tab_name = 'Help & Instructions' %}
+
+{% block extra_css %}
+<style>
+      body {
+        background-color: #0b1326;
+        color: #dae2fd;
+        font-family: 'Inter', sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        background: rgba(49, 57, 77, 0.6);
+        backdrop-filter: blur(12px);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      details summary::-webkit-details-marker {
+        display: none;
+      }
+    </style>
+{% endblock %}
+
+{% block content %}
+<!-- Vertical Collapsible Sections -->
+<div class="space-y-4">
+<!-- Section 1: Core Scheduling Protocols -->
+<details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden" open="">
+<summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_today">calendar_today</span>
+</div>
+<h2 class="text-xl font-bold text-on-surface tracking-tight">Core Scheduling Protocols</h2>
+</div>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-8 pt-2">
+<div class="space-y-4 text-on-surface-variant leading-relaxed">
+<label class="block text-xs font-semibold uppercase tracking-widest text-outline mb-2">Protocol Definition</label>
+<p class="text-sm bg-surface-container-lowest/50 p-4 rounded-lg border border-outline-variant/5">
+                            Defined manual override rules for physician rotations incorporate emergency block-outs and priority patient tiering logic. All primary care rotations are subject to automated balancing algorithms unless a manual priority tag is applied by the head administrator.
+                        </p>
+</div>
+</div>
+</details>
+<!-- Section 2: Quick Reference -->
+<details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
+<summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-secondary/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="lightbulb">lightbulb</span>
+</div>
+<h2 class="text-xl font-bold text-on-surface tracking-tight">Quick Reference</h2>
+</div>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-8 pt-2">
+<div class="space-y-4">
+<div class="p-4 bg-surface-container-lowest rounded-lg border-l-4 border-secondary">
+<p class="text-sm font-medium text-on-surface">Standard Shift: 08:00 - 18:00</p>
+<p class="text-xs text-outline mt-1">Ensure all rotations account for the 30-minute transition window between staff handovers.</p>
+</div>
+<div class="p-4 bg-surface-container-lowest rounded-lg border-l-4 border-primary">
+<p class="text-sm font-medium text-on-surface">Emergency Triage Rule</p>
+<p class="text-xs text-outline mt-1">Slot 4B is reserved exclusively for urgent walk-ins after 14:00 daily.</p>
+</div>
+<div class="mt-4">
+<img alt="Medical data visualization" class="w-full h-32 object-cover rounded-lg opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Stylized abstract medical data visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkhjh8Fc_00_S6NeQyGftSfpSO6wVYkC5_KGIlspnAFfLLM-Cl5u2RykBuKxJVTDZoAqvd9cETNYxj5jYbm6Ouy2m7jG4jYPspBCpX7xMGpn2xhb3sOJ3pmHvEBhI17CyZPVQ5989FqPwM6ykZ13i3N_6ZO7NDmVSdqBujb-tXIBV1zKPjavsTzLNpmQarGPGtksWBshNOF-_UOmMnZr7PbWX3Ze93uY34bCLdPMAazQo0F0mo9PR-0UeDcGYJep6z23LCvd7rnQ"/>
+</div>
+</div>
+</div>
+</details>
+<!-- Section 3: Supply & Resource Allocation -->
+<details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
+<summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-tertiary/10 rounded-lg">
+<span class="material-symbols-outlined text-tertiary" data-icon="inventory_2">inventory_2</span>
+</div>
+<h2 class="text-xl font-bold text-on-surface tracking-tight">Supply &amp; Resource Allocation</h2>
+</div>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-8 pt-2">
+<div class="space-y-4">
+<label class="block text-xs font-semibold uppercase tracking-widest text-outline mb-2">Resource Constraints</label>
+<p class="text-sm bg-surface-container-lowest/50 p-4 rounded-lg border border-outline-variant/5 text-on-surface-variant">
+                            Equipment maintenance cycles are scheduled for the last Saturday of every month. Room availability constraints are strictly enforced for MRI and CT suites during peak hours (10:00 - 14:00).
+                        </p>
+<div class="flex items-center justify-between mt-4">
+<span class="text-xs text-outline">Last edited: 2 hours ago by Admin</span>
+</div>
+</div>
+</div>
+</details>
+<!-- Section 4: Compliance & Data Privacy -->
+<details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
+<summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-error/10 rounded-lg">
+<span class="material-symbols-outlined text-error" data-icon="gavel">gavel</span>
+</div>
+<h2 class="text-xl font-bold text-on-surface tracking-tight">Compliance &amp; Data Privacy</h2>
+</div>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-8 pt-2">
+<div class="space-y-4">
+<label class="block text-xs font-semibold uppercase tracking-widest text-outline mb-2">Mandatory Guidelines</label>
+<p class="text-sm bg-surface-container-lowest/50 p-4 rounded-lg border border-outline-variant/5 text-on-surface-variant">
+                            Encryption requirements for all patient data exports remain at AES-256 standards. Manual verification steps for physician credentials must be completed bi-annually through the central registry portal.
+                        </p>
+<div class="flex -space-x-2 mt-4">
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-low bg-primary/20 flex items-center justify-center text-[10px] font-bold">JD</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-low bg-secondary/20 flex items-center justify-center text-[10px] font-bold">MS</div>
+</div>
+</div>
+</div>
+</details>
+</div>
+<!-- Bottom padding to replace the removed footer -->
+<div class="h-12"></div>
+</main>
+{% endblock %}

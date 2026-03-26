@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% set active_tab = 'physicians' %}
+{% set tab_name = 'Physicians Roster' %}
+
+{% block extra_css %}
+<style>
+    .desperation-slider {
+      display: flex;
+      background: #171f33;
+      padding: 2px;
+      border-radius: 9999px;
+      position: relative;
+      width: 300px;
+    }
+    .desperation-slider label {
+      cursor: pointer;
+      font-size: 7px;
+      font-weight: 800;
+      padding: 6px 0;
+      flex: 1;
+      text-align: center;
+      border-radius: 9999px;
+      z-index: 1;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .desperation-slider input { display: none; }
+    #mode-off:checked ~ .slider-bg { left: 2px; background: #00d98f; width: calc(33.33% - 2px); }
+    #mode-stage1:checked ~ .slider-bg { left: 33.33%; background: #494bd6; width: calc(33.33% - 2px); }
+    #mode-stage2:checked ~ .slider-bg { left: 66.66%; background: #93000a; width: calc(33.33% - 2px); }
+    #mode-off:checked + label { color: #002112; }
+    #mode-stage1:checked + label { color: #ffffff; }
+    #mode-stage2:checked + label { color: #ffffff; }
+    .slider-bg {
+      position: absolute;
+      top: 2px;
+      bottom: 2px;
+      border-radius: 9999px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .resizer-handle { cursor: col-resize; transition: background 0.2s; }
+    .resizer-handle:hover { background: rgba(192, 193, 255, 0.2); }
+
+    .flex-col:has(#mode-off:checked) .status-off { display: block !important; }
+    .flex-col:has(#mode-off:checked) .status-stage1, .flex-col:has(#mode-off:checked) .status-stage2 { display: none !important; }
+    .flex-col:has(#mode-stage1:checked) .status-stage1 { display: block !important; }
+    .flex-col:has(#mode-stage1:checked) .status-off, .flex-col:has(#mode-stage1:checked) .status-stage2 { display: none !important; }
+    .flex-col:has(#mode-stage2:checked) .status-stage2 { display: block !important; }
+    .flex-col:has(#mode-stage2:checked) .status-off, .flex-col:has(#mode-stage2:checked) .status-stage1 { display: none !important; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="flex flex-1 overflow-hidden">
+<!-- Left Sidebar (Stats & Alerts) -->
+<aside class="w-64 bg-[#131b2e] border-r border-outline-variant/10 flex flex-col shrink-0 relative">
+<div class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-6">
+<!-- Total Physician Stats -->
+<div class="space-y-4">
+<div class="grid grid-cols-1 gap-3">
+<div class="flex flex-col bg-surface-container-low p-3 rounded-xl border border-outline-variant/10">
+<span class="text-[9px] uppercase tracking-widest text-outline font-bold">Listed Physicians</span>
+<span id="total-physicians-stat" class="text-2xl font-black text-on-surface">0</span>
+</div>
+<div class="flex flex-col bg-surface-container-low p-3 rounded-xl border border-outline-variant/10">
+<span class="text-[9px] uppercase tracking-widest text-outline font-bold">Active</span>
+<span id="active-physicians-stat" class="text-2xl font-black text-secondary">0</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button id="export-btn" class="flex-1 px-2 py-1.5 text-[9px] font-bold text-outline hover:text-on-surface border border-outline-variant/20 rounded-lg transition-colors">Export</button>
+<button id="history-btn" class="flex-1 px-2 py-1.5 text-[9px] font-bold text-outline hover:text-on-surface border border-outline-variant/20 rounded-lg transition-colors">History</button>
+</div>
+</div>
+<!-- Capacity Overview -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/10">
+<h3 class="text-[9px] font-bold uppercase tracking-widest text-primary mb-3">Capacity</h3>
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-[9px] text-on-surface-variant font-semibold">Roster Targets vs Clinic Needs</span>
+<span id="capacity-pct" class="text-sm font-black text-on-surface">--%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div id="capacity-bar" class="bg-gradient-to-r from-primary to-secondary h-full transition-all duration-500" style="width: 0%"></div>
+</div>
+<div class="flex justify-between text-[8px] text-outline">
+<span>Targets: <strong id="capacity-targets" class="text-on-surface">0</strong></span>
+<span>Needs: <strong id="capacity-needs" class="text-on-surface">--</strong></span>
+</div>
+</div>
+</div>
+<!-- Potential Friction -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden flex flex-col">
+<div class="p-4 pb-2">
+<h3 class="text-[9px] font-bold uppercase tracking-widest text-error mb-2">Potential Friction</h3>
+</div>
+<div id="friction-list" class="flex-1 space-y-0.5 max-h-48 overflow-y-auto custom-scrollbar">
+<div class="px-4 py-2 text-[9px] text-outline italic">Analyzing roster...</div>
+</div>
+</div>
+</div>
+<!-- Resizing Handle -->
+<div class="resizer-handle absolute right-0 top-0 bottom-0 w-1.5 flex items-center justify-center">
+<div class="w-[1px] h-12 bg-outline-variant/30 rounded-full"></div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 h-full overflow-y-auto bg-surface custom-scrollbar">
+<div class="p-6 space-y-6 max-w-7xl mx-auto">
+<!-- Top Section (Instructions) -->
+<section class="bg-surface-container-low rounded-xl overflow-hidden shadow-2xl border border-outline-variant/10">
+<div class="p-4 px-6">
+<h2 class="text-[10px] font-black uppercase tracking-[0.2em] text-primary mb-2">Quick Reference</h2>
+<div class="grid grid-cols-2 gap-6 text-xs text-on-surface-variant leading-relaxed">
+    <div>
+        <p class="text-[9px] font-bold text-secondary uppercase tracking-widest mb-1">Column Legend</p>
+        <p><strong class="text-primary">Active:</strong> Is this physician in the rotation?</p>
+        <p><strong class="text-primary">Target:</strong> Total shifts this physician should get.</p>
+        <p><strong class="text-primary">1st / 2nd:</strong> Restrict to first or second half of the month.</p>
+        <p><strong class="text-primary">FullDay?:</strong> Can this physician work AM + PM same day?</p>
+        <p><strong class="text-primary">Pref / Avoid:</strong> Dates they want to work / want off.</p>
+        <p><strong class="text-primary">Override:</strong> Force-assign specific date slots.</p>
+    </div>
+    <div>
+        <p class="text-[9px] font-bold text-secondary uppercase tracking-widest mb-1">Syntax & Suggestions</p>
+        <p><strong class="text-primary">Date Formats:</strong> <code class="text-on-surface bg-surface-container-highest px-1 rounded">1, 2, 3</code> &nbsp; <code class="text-on-surface bg-surface-container-highest px-1 rounded">2AM, 3PM</code> &nbsp; <code class="text-on-surface bg-surface-container-highest px-1 rounded">1-5</code> &nbsp; <code class="text-on-surface bg-surface-container-highest px-1 rounded">4-8AM</code></p>
+        <p class="mt-1"><strong class="text-primary">Logic:</strong> Keep Ratio-based Logic ON for balanced distribution.</p>
+        <p class="mt-1"><strong class="text-primary">Desperation:</strong></p>
+        <p class="ml-2">Stage 0: Safe. Honors all requests. May leave holes.</p>
+        <p class="ml-2">Stage 1: Soft override. Recommended balance.</p>
+        <p class="ml-2">Stage 2: Hard. Ignores preferences to fill all slots.</p>
+    </div>
+</div>
+</div>
+</section>
+<!-- Global Controls Header - Streamlined -->
+<section class="bg-surface-container-low px-6 py-4 rounded-xl border-l-4 border-primary flex items-center justify-between gap-6 shadow-lg">
+<div class="shrink-0">
+<h2 class="text-xl font-black tracking-tighter text-on-surface">Physicians Roster</h2>
+</div>
+<div class="flex items-center gap-6 flex-1 justify-end">
+<!-- Desperation Mode Inline -->
+<div class="flex flex-col items-center gap-2">
+<div class="desperation-slider">
+<input checked="" id="mode-off" name="desperation" type="radio"/>
+<label for="mode-off">STAGE 0</label>
+<input id="mode-stage1" name="desperation" type="radio"/>
+<label for="mode-stage1">STAGE 1</label>
+<input id="mode-stage2" name="desperation" type="radio"/>
+<label for="mode-stage2">STAGE 2</label>
+<div class="slider-bg"></div>
+</div>
+<div class="mode-status text-[9px] font-bold tracking-widest uppercase text-primary/80 transition-all">
+<span class="status-off">Desperation Mode: Stage 0 (Honor Everything)</span>
+<span class="status-stage1 hidden">Desperation Mode: Stage 1 (Balanced, Recommended)</span>
+<span class="status-stage2 hidden">Desperation Mode: Stage 2 (Prioritize Filling Clinic)</span>
+</div>
+</div>
+<!-- Ratio-Based Logic Toggle -->
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-2 rounded-lg border border-outline-variant/10">
+<span class="text-[9px] font-bold text-outline uppercase tracking-widest">Ratio Logic</span>
+<label class="relative inline-flex items-center cursor-pointer">
+    <input id="ratio-toggle" type="checkbox" checked class="sr-only peer">
+    <div class="w-9 h-5 bg-surface-container-highest rounded-full peer peer-checked:bg-secondary/60 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</div>
+<!-- Action Buttons Row -->
+<div class="flex items-center gap-2">
+<button id="undo-btn" class="flex items-center justify-center p-1.5 rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-variant transition-colors" title="Undo">
+<span class="material-symbols-outlined text-lg">undo</span>
+</button>
+<button id="reset-btn" class="px-3 py-1.5 rounded-lg bg-surface-container-highest text-[10px] font-bold text-on-surface hover:bg-surface-variant transition-colors border border-outline-variant/10">
+                Reset
+              </button>
+<button id="save-btn" class="px-3 py-1.5 rounded-lg bg-primary/10 text-[10px] font-bold text-primary hover:bg-primary/20 transition-colors border border-primary/20">
+                Save Changes
+              </button>
+<button id="clear-dates-btn" class="px-3 py-1.5 rounded-lg bg-error-container/10 text-[10px] font-bold text-error hover:bg-error-container/20 transition-all border border-error/20">
+                Clear Dates
+              </button>
+</div>
+</div>
+</section>
+<!-- Grid Layout - Table Section -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-2xl border border-outline-variant/10">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest text-left border-b border-outline-variant/10">
+<th class="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-outline">Active</th>
+<th class="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-outline">Physician Name</th>
+<th class="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-outline text-center">Target</th>
+<th class="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-outline text-center">1ST HALF</th>
+<th class="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-outline text-center">2ND HALF</th>
+<th class="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-outline text-center">Full Day</th>
+<th class="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-outline">Preferred</th>
+<th class="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-outline">Avoid</th>
+<th class="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-outline">Override</th>
+<th class="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-outline text-center">Color</th>
+<th class="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-outline text-right">Actions</th>
+</tr>
+</thead>
+<tbody id="roster-tbody" class="divide-y divide-outline-variant/5">
+    <!-- Rows dynamically generated by app.js -->
+</tbody>
+</table>
+</div>
+<!-- Table Action Footer -->
+<div class="p-3 px-6 bg-surface-container-lowest/30 border-t border-outline-variant/10">
+<button id="add-physician-btn" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group">
+<div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm text-primary">add</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary">Add Physician Row</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+{% endblock %}

@@ -39,3 +39,9 @@ physician_state.json
 *.xlsx
 
 archive/
+settings_state.json
+output_schedule.json
+ui/
+unify_templates.py
+patch_nav.py
+Stitch_UI_Prompt.md
