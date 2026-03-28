@@ -122,11 +122,28 @@ class SchedulerLogic:
             
             # Identify eligible doctors
             eligible = [p for p in self.physicians if len(p.assigned_shifts) < p.target]
-            random.shuffle(eligible) # Tie-breaker
             
-            if algorithm == "Ratio":
-                # Sort physicians by target completion (Those farthest from goal go first)
-                eligible.sort(key=lambda p: len(p.assigned_shifts) - p.target)
+            # Statistical Gravity Tie-Breaker:
+            # Instead of a pure random.shuffle(), we use their original list position as a tiny weight penalty.
+            # random() produces 0.0 - 1.0. A doctor 10 spots down gets a +0.5 penalty.
+            # This makes lower-ranked physicians statistically lose ties slightly more often.
+            def round_robin_sort_key(p):
+                try:
+                    row_idx = self.physicians.index(p)
+                except ValueError:
+                    row_idx = 0
+                
+                tiebreaker = random.random() + (row_idx * 0.05)
+                
+                if algorithm == "Ratio":
+                    # Primary: How many shifts away from target they are (most needy first).
+                    # Secondary: The weighted tiebreaker.
+                    deficit = len(p.assigned_shifts) - p.target
+                    return (deficit, tiebreaker)
+                else: # Standard Mode
+                    return (tiebreaker,)
+            
+            eligible.sort(key=round_robin_sort_key)
             
             assigned_someone = False
             for p in eligible:
