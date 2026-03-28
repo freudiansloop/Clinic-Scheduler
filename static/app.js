@@ -563,8 +563,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const reqPM = needsData.overrides[d.toString()]?.PM !== undefined ? needsData.overrides[d.toString()].PM : (needsData.daily_needs[backendDayOfWeekStr]?.PM || 0);
             const isClosed = (reqAM === 0 && reqPM === 0);
 
-            const amStatusHtml = (reqAM > slots.AM.length) ? '<span class="text-[8px] font-bold text-error bg-error/10 px-1 py-0.5 rounded uppercase text-center block w-full mt-0.5 shadow-sm border border-error/20 inline-block w-auto">Unfilled</span>' : '<span class="text-[8px] text-outline/20 italic">Open</span>';
-            const pmStatusHtml = (reqPM > slots.PM.length) ? '<span class="text-[8px] font-bold text-error bg-error/10 px-1 py-0.5 rounded uppercase text-center block w-full mt-0.5 shadow-sm border border-error/20 inline-block w-auto">Unfilled</span>' : '<span class="text-[8px] text-outline/10 italic">Open</span>';
+            const amStatusHtml = (reqAM > slots.AM.length) ? '<span class="text-[8px] font-bold text-error bg-error/10 px-1 py-0.5 rounded uppercase text-center block w-full mt-0.5 shadow-sm border border-error/20 inline-block w-auto">Unfilled</span>' : '';
+            const pmStatusHtml = (reqPM > slots.PM.length) ? '<span class="text-[8px] font-bold text-error bg-error/10 px-1 py-0.5 rounded uppercase text-center block w-full mt-0.5 shadow-sm border border-error/20 inline-block w-auto">Unfilled</span>' : '';
 
             const cell = document.createElement("div"); 
             
@@ -585,12 +585,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span class="text-xs font-bold text-primary">${d < 10 ? '0'+d : d}</span>
                     </div>
                     <div class="flex flex-col gap-1.5 mt-1">
-                        <div class="bg-surface-container-highest/30 rounded-lg p-1.5 border border-outline-variant/10 relative min-h-[45px]">
+                        <div class="bg-surface-container-highest/30 rounded-lg p-1.5 border border-outline-variant/10 relative h-[54px] overflow-y-auto no-scrollbar">
                             <span class="absolute top-1 right-1.5 text-[9px] text-outline/60 font-black tracking-widest">AM</span>
                             <div class="flex flex-col gap-1 mt-1 pr-4">${amHtml || amStatusHtml}</div>
                         </div>
-                        <div class="mx-3 h-px bg-outline/20 rounded-full"></div>
-                        <div class="bg-surface-container-highest/10 rounded-lg p-1.5 border border-outline-variant/5 relative min-h-[45px]">
+                        <div class="mx-3 h-[2px] bg-secondary/40 rounded-full"></div>
+                        <div class="bg-surface-container-highest/10 rounded-lg p-1.5 border border-outline-variant/5 relative h-[54px] overflow-y-auto no-scrollbar">
                             <span class="absolute top-1 right-1.5 text-[9px] text-outline/40 font-black tracking-widest">PM</span>
                             <div class="flex flex-col gap-1 mt-1 pr-4">${pmHtml || pmStatusHtml}</div>
                         </div>
