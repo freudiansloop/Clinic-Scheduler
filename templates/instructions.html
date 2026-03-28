@@ -170,6 +170,39 @@
                 </div>
             </div>
         </details>
+
+        <!-- 4. ALGORITHM LOGIC -->
+        <details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
+            <summary class="flex items-center justify-between px-5 py-3 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
+                <div class="flex items-center gap-4">
+                    <div class="p-2 bg-secondary/10 rounded-lg">
+                        <span class="material-symbols-outlined text-secondary">psychology</span>
+                    </div>
+                    <h2 class="text-lg font-bold text-on-surface tracking-tight">4. How the Algorithm Thinks</h2>
+                </div>
+                <span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+            </summary>
+            <div class="px-6 pb-6 pt-2">
+                <div class="space-y-4 text-on-surface-variant leading-relaxed text-sm">
+                    <p>When you click "Regenerate Schedule," the engine runs through four highly structured phases to build the perfect calendar:</p>
+                    
+                    <ul class="list-none space-y-4">
+                        <li><strong class="text-primary block mb-1">Phase 1: Hard Overrides (The Nuclear Option)</strong>
+                        The algorithm processes the "Override" field first. It <em>forces</em> an assignment for those specific dates, ruthlessly ignoring nearly all other constraints (like Target limits or Half-Month restrictions) to make it happen. Used for things like fixed administrative days.</li>
+                        
+                        <li><strong class="text-primary block mb-1">Phase 2: Preferences (Soft Requests)</strong>
+                        Next, it attempts to grant "Preferred" dates. These are soft requests: the software will grant them <em>only</em> if the clinic actually needs a doctor that day, the doctor hasn't hit their shift limit, and the requested date isn't in their "Avoid" list.</li>
+
+                        <li><strong class="text-primary block mb-1">Phase 3: Randomized Round-Robin (The Filler)</strong>
+                        With absolute constraints locked in, the system fills the remaining empty slots by cycling through eligible doctors. For each turn, it identifies all valid, non-avoided, available slots for that physician, and selects one completely at random. This stochastic approach guarantees a slightly different, thoroughly distributed calendar every time you click Regenerate.</li>
+
+                        <li><strong class="text-primary block mb-1">Phase 4: Audits & Validation</strong>
+                        Finally, a scanning module assesses the output. It triggers the visual warnings (Yellow/Orange/Red) if any clinic needs went completely unfilled, or if a doctor somehow didn't meet their monthly target due to too many restrictive constraints.</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
+
     </div>
 </main>
 
