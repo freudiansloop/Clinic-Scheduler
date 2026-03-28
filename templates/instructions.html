@@ -26,104 +26,151 @@
 {% endblock %}
 
 {% block content %}
-<!-- Vertical Collapsible Sections -->
-<div class="space-y-4">
-<!-- Section 1: Core Scheduling Protocols -->
-<details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden" open="">
-<summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
-<div class="flex items-center gap-4">
-<div class="p-2 bg-primary/10 rounded-lg">
-<span class="material-symbols-outlined text-primary" data-icon="calendar_today">calendar_today</span>
-</div>
-<h2 class="text-xl font-bold text-on-surface tracking-tight">Core Scheduling Protocols</h2>
-</div>
-<span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
-</summary>
-<div class="px-6 pb-8 pt-2">
-<div class="space-y-4 text-on-surface-variant leading-relaxed">
-<label class="block text-xs font-semibold uppercase tracking-widest text-outline mb-2">Protocol Definition</label>
-<p class="text-sm bg-surface-container-lowest/50 p-4 rounded-lg border border-outline-variant/5">
-                            Defined manual override rules for physician rotations incorporate emergency block-outs and priority patient tiering logic. All primary care rotations are subject to automated balancing algorithms unless a manual priority tag is applied by the head administrator.
-                        </p>
-</div>
-</div>
-</details>
-<!-- Section 2: Quick Reference -->
-<details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
-<summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
-<div class="flex items-center gap-4">
-<div class="p-2 bg-secondary/10 rounded-lg">
-<span class="material-symbols-outlined text-secondary" data-icon="lightbulb">lightbulb</span>
-</div>
-<h2 class="text-xl font-bold text-on-surface tracking-tight">Quick Reference</h2>
-</div>
-<span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
-</summary>
-<div class="px-6 pb-8 pt-2">
-<div class="space-y-4">
-<div class="p-4 bg-surface-container-lowest rounded-lg border-l-4 border-secondary">
-<p class="text-sm font-medium text-on-surface">Standard Shift: 08:00 - 18:00</p>
-<p class="text-xs text-outline mt-1">Ensure all rotations account for the 30-minute transition window between staff handovers.</p>
-</div>
-<div class="p-4 bg-surface-container-lowest rounded-lg border-l-4 border-primary">
-<p class="text-sm font-medium text-on-surface">Emergency Triage Rule</p>
-<p class="text-xs text-outline mt-1">Slot 4B is reserved exclusively for urgent walk-ins after 14:00 daily.</p>
-</div>
-<div class="mt-4">
-<img alt="Medical data visualization" class="w-full h-32 object-cover rounded-lg opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Stylized abstract medical data visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkhjh8Fc_00_S6NeQyGftSfpSO6wVYkC5_KGIlspnAFfLLM-Cl5u2RykBuKxJVTDZoAqvd9cETNYxj5jYbm6Ouy2m7jG4jYPspBCpX7xMGpn2xhb3sOJ3pmHvEBhI17CyZPVQ5989FqPwM6ykZ13i3N_6ZO7NDmVSdqBujb-tXIBV1zKPjavsTzLNpmQarGPGtksWBshNOF-_UOmMnZr7PbWX3Ze93uY34bCLdPMAazQo0F0mo9PR-0UeDcGYJep6z23LCvd7rnQ"/>
-</div>
-</div>
-</div>
-</details>
-<!-- Section 3: Supply & Resource Allocation -->
-<details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
-<summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
-<div class="flex items-center gap-4">
-<div class="p-2 bg-tertiary/10 rounded-lg">
-<span class="material-symbols-outlined text-tertiary" data-icon="inventory_2">inventory_2</span>
-</div>
-<h2 class="text-xl font-bold text-on-surface tracking-tight">Supply &amp; Resource Allocation</h2>
-</div>
-<span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
-</summary>
-<div class="px-6 pb-8 pt-2">
-<div class="space-y-4">
-<label class="block text-xs font-semibold uppercase tracking-widest text-outline mb-2">Resource Constraints</label>
-<p class="text-sm bg-surface-container-lowest/50 p-4 rounded-lg border border-outline-variant/5 text-on-surface-variant">
-                            Equipment maintenance cycles are scheduled for the last Saturday of every month. Room availability constraints are strictly enforced for MRI and CT suites during peak hours (10:00 - 14:00).
-                        </p>
-<div class="flex items-center justify-between mt-4">
-<span class="text-xs text-outline">Last edited: 2 hours ago by Admin</span>
-</div>
-</div>
-</div>
-</details>
-<!-- Section 4: Compliance & Data Privacy -->
-<details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
-<summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
-<div class="flex items-center gap-4">
-<div class="p-2 bg-error/10 rounded-lg">
-<span class="material-symbols-outlined text-error" data-icon="gavel">gavel</span>
-</div>
-<h2 class="text-xl font-bold text-on-surface tracking-tight">Compliance &amp; Data Privacy</h2>
-</div>
-<span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
-</summary>
-<div class="px-6 pb-8 pt-2">
-<div class="space-y-4">
-<label class="block text-xs font-semibold uppercase tracking-widest text-outline mb-2">Mandatory Guidelines</label>
-<p class="text-sm bg-surface-container-lowest/50 p-4 rounded-lg border border-outline-variant/5 text-on-surface-variant">
-                            Encryption requirements for all patient data exports remain at AES-256 standards. Manual verification steps for physician credentials must be completed bi-annually through the central registry portal.
-                        </p>
-<div class="flex -space-x-2 mt-4">
-<div class="w-8 h-8 rounded-full border-2 border-surface-container-low bg-primary/20 flex items-center justify-center text-[10px] font-bold">JD</div>
-<div class="w-8 h-8 rounded-full border-2 border-surface-container-low bg-secondary/20 flex items-center justify-center text-[10px] font-bold">MS</div>
-</div>
-</div>
-</div>
-</details>
-</div>
-<!-- Bottom padding to replace the removed footer -->
-<div class="h-12"></div>
+<!-- Main Content -->
+<main class="pt-24 pb-12 px-6 max-w-7xl mx-auto h-[calc(100vh-4rem)] overflow-y-auto no-scrollbar">
+    <!-- Header Section -->
+    <div class="mb-10">
+        <h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">CLINIC SCHEDULER - USER GUIDE</h1>
+        <p class="text-outline max-w-2xl">This tool is designed to take the headache out of scheduling by automatically balancing workloads and honoring doctor preferences.</p>
+    </div>
+
+    <!-- Vertical Collapsible Sections -->
+    <div class="space-y-4">
+
+        <!-- 0. NEW TO WEBUI -->
+        <details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden" open="">
+            <summary class="flex items-center justify-between px-5 py-3 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
+                <div class="flex items-center gap-4">
+                    <div class="p-2 bg-error/10 rounded-lg">
+                        <span class="material-symbols-outlined text-error">new_releases</span>
+                    </div>
+                    <h2 class="text-lg font-bold text-on-surface tracking-tight">What's New in the WebUI</h2>
+                </div>
+                <span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+            </summary>
+            <div class="px-6 pb-6 pt-2">
+                <div class="space-y-4 text-on-surface-variant leading-relaxed text-sm">
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Modern Interface:</strong> The old Tkinter desktop window has been completely replaced with a fast, modern HTML web interface.</li>
+                        <li><strong>Live Schedule Regeneration:</strong> Tab 3 now shows you the complete calendar live in your browser whenever you generate a new schedule.</li>
+                        <li><strong>Diagnostic Highlighting:</strong> You can toggle Tab 3 to display target-violations and schedule warnings instantly using color codes.</li>
+                        <li><strong>Dynamic Drag-and-Drop:</strong> You can move physician rows in Tab 1, and edit parameters dynamically without messy popups.</li>
+                        <li><strong>State Restoring Excel Exports:</strong> Your exported Excel files now secretly store the logic state on row 80. Dropping the file back into Tab 4 re-loads all your settings perfectly!</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
+
+        <!-- 1. BASICS -->
+        <details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
+            <summary class="flex items-center justify-between px-5 py-3 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
+                <div class="flex items-center gap-4">
+                    <div class="p-2 bg-primary/10 rounded-lg">
+                        <span class="material-symbols-outlined text-primary">play_circle</span>
+                    </div>
+                    <h2 class="text-lg font-bold text-on-surface tracking-tight">1. Basics & Workflow</h2>
+                </div>
+                <span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+            </summary>
+            <div class="px-6 pb-6 pt-2">
+                <div class="space-y-4 text-on-surface-variant leading-relaxed text-sm">
+                    <p><strong class="text-on-surface">1. Enter Doctor Information (Tab 1)</strong><br>
+                    Add your physicians and set their "Target" shifts for the month. Enter their preferences, avoidances, or if they only work early/late in the month.</p>
+                    <p><strong class="text-on-surface">2. Define Clinic Needs (Tab 2)</strong><br>
+                    Specify how many doctors are needed each morning (AM) and afternoon (PM). Use "Close Clinic" to mark weeks with no activity (e.g., holidays).</p>
+                    <p><strong class="text-on-surface">3. Generate the Schedule (Tab 3 & 3.5)</strong><br>
+                    Click 'REGENERATE SCHEDULE'. The software will instantly assign shifts. Don't like the result? Just click 'REGENERATE SCHEDULE' again! Every click explores a different viable combination.</p>
+                    <p><strong class="text-on-surface">4. Export and Share (Tab 4)</strong><br>
+                    Once you are happy with the visual calendar, go to Tab 4 to export the schedule directly into an Excel template.</p>
+                </div>
+            </div>
+        </details>
+
+        <!-- 2. SETTINGS (TAB 1) -->
+        <details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
+            <summary class="flex items-center justify-between px-5 py-3 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
+                <div class="flex items-center gap-4">
+                    <div class="p-2 bg-secondary/10 rounded-lg">
+                        <span class="material-symbols-outlined text-secondary">tune</span>
+                    </div>
+                    <h2 class="text-lg font-bold text-on-surface tracking-tight">2. Settings: Physicians (Tab 1)</h2>
+                </div>
+                <span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+            </summary>
+            <div class="px-6 pb-8 pt-2">
+                <div class="space-y-4 text-sm text-on-surface-variant leading-relaxed">
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong class="text-primary">Active (Checkbox):</strong> Uncheck to temporarily remove a doctor from scheduling consideration.</li>
+                        <li><strong class="text-primary">Target:</strong> The strict total number of shifts this doctor needs to work this month.</li>
+                        <li><strong class="text-primary">1st / 2nd (Checkboxes):</strong> Restricts the doctor to only work during the first half (1st) or second half (2nd) of the month.</li>
+                        <li><strong class="text-primary">FullDay? (Checkbox):</strong> If checked, the algorithm is allowed to assign this doctor an AM and PM shift on the exact same day. If unchecked, they will only work half-days.</li>
+                        <li><strong class="text-primary">Preferred & Avoid & Override Dates:</strong>
+                            <ul class="list-none pl-5 mt-1 space-y-1">
+                                <li>• Acceptable Syntax: You can use spaces, commas, or both to separate dates.</li>
+                                <li>• Single Dates: "12, 15" or "12 15"</li>
+                                <li>• Date Ranges: "20-25" (Includes the 20th through the 25th)</li>
+                                <li>• AM/PM Specific: "12AM, 15PM" or "1-5AM" (Restricts only that half of the day)</li>
+                                <li>• Combinations: "1, 3-5, 12PM"</li>
+                                <li><em>(Preferred dates are soft requests. Avoid/Override are strict constraints.)</em></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="p-4 bg-surface-container-lowest rounded-lg border-l-4 border-secondary mt-4">
+                        <p class="text-sm font-bold text-on-surface">Global Settings</p>
+                        <p class="mt-2 text-xs text-outline"><strong class="text-secondary">Algorithm Mode ("Ratio-Based Logic" vs "Standard")</strong></p>
+                        <ul class="list-disc pl-5 mt-1 text-xs">
+                            <li><strong>Standard:</strong> A purely mathematical approach to filling the calendar linearly.</li>
+                            <li><strong>Ratio-Based (Recommended):</strong> A highly intelligent mode that scales down targets to calculate the true needed "ratio" of shifts before beginning, ensuring a smoother spread across the month and eliminating end-of-month clumping.</li>
+                        </ul>
+                        <p class="mt-4 text-xs text-outline"><strong class="text-secondary">Desperation Level (Controls how strictly the algorithm adheres to rules)</strong></p>
+                        <ul class="list-disc pl-5 mt-1 text-xs">
+                            <li><strong>OFF (Stage 0):</strong> Perfect compliance. Will leave a shift empty rather than break a rule.</li>
+                            <li><strong>FAIR (Stage 1 - RECOMMENDED):</strong> Bends minor rules (like preference density) to ensure the clinic is staffed.</li>
+                            <li><strong>HIGH (Stage 2):</strong> Breaks major rules (like 'Avoid' dates) to force staffing. Keep this OFF unless completely desperate.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </details>
+
+        <!-- 3. SETTINGS (TABS 2, 3, 4) -->
+        <details class="group bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
+            <summary class="flex items-center justify-between px-5 py-3 cursor-pointer hover:bg-surface-container-highest transition-all list-none">
+                <div class="flex items-center gap-4">
+                    <div class="p-2 bg-tertiary/10 rounded-lg">
+                        <span class="material-symbols-outlined text-tertiary">dashboard</span>
+                    </div>
+                    <h2 class="text-lg font-bold text-on-surface tracking-tight">3. Settings: Needs & Exports (Tabs 2-4)</h2>
+                </div>
+                <span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+            </summary>
+            <div class="px-6 pb-8 pt-2">
+                <div class="space-y-4 text-on-surface-variant leading-relaxed text-sm">
+                    <p><strong class="text-on-surface">TAB 2: NEEDS</strong></p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>AM/PM Number Inputs:</strong> Set the required number of coverage spots per half-day.</li>
+                        <li><strong>First/Second Half Divider:</strong> Sets the specific date that divides the "1st" and "2nd" half of the month for doctors using those checkboxes. If set to "Automatic", it splits at the numerical halfway point of the month.</li>
+                        <li><strong>Close Clinic (Button):</strong> Zeros out all requirements for a specific day, effectively blocking any scheduled shifts for that time.</li>
+                    </ul>
+
+                    <p class="mt-6"><strong class="text-on-surface">TAB 3: SCHEDULE GENERATION</strong></p>
+                    <p>Click "REGENERATE" to instantly erase and recalculate algorithmic assignment patterns based on your updated settings and roster constraints. Use the view modes to analyze holes or errors in the generation:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>COLORS:</strong> Highlights the physician's personalized color selection.</li>
+                        <li><strong>AM/PM:</strong> Visually differentiates blocks by Morning (pale yellow) and Afternoon (dark blue).</li>
+                        <li><strong>TARGETS:</strong> Visually highlights shifts based on target thresholds. Requested shifts are green, normal matches are blue, and warnings (such as exceeding target or breaking avoids) are yellow/orange/red.</li>
+                    </ul>
+
+                    <p class="mt-6"><strong class="text-on-surface">TAB 4: DATA MANAGEMENT</strong></p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>IMPORT:</strong> Load a previously saved schedule configuration from an Excel file.</li>
+                        <li><strong>EXPORT:</strong> Save the calendar in the standard printable format. <em>This embedded file acts as a save-state that can be imported later!</em></li>
+                    </ul>
+                </div>
+            </div>
+        </details>
+    </div>
 </main>
+
 {% endblock %}

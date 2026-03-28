@@ -140,11 +140,11 @@
 <!-- Desperation Mode Inline -->
 <div class="flex flex-col items-center gap-2">
 <div class="desperation-slider">
-                <input id="mode-off" name="desperation" type="radio"/>
+                <input id="mode-off" name="desperation" value="0" type="radio"/>
                 <label for="mode-off">STAGE 0</label>
-                <input checked="" id="mode-stage1" name="desperation" type="radio"/>
+                <input checked="" id="mode-stage1" name="desperation" value="1" type="radio"/>
                 <label for="mode-stage1">STAGE 1</label>
-                <input id="mode-stage2" name="desperation" type="radio"/>
+                <input id="mode-stage2" name="desperation" value="2" type="radio"/>
                 <label for="mode-stage2">STAGE 2</label>
 <div class="slider-bg"></div>
 </div>
@@ -158,7 +158,7 @@
 <div class="flex items-center gap-2 bg-surface-container-high px-3 py-2 rounded-lg border border-outline-variant/10">
 <span class="text-[9px] font-bold text-outline uppercase tracking-widest">Ratio Logic</span>
 <label class="relative inline-flex items-center cursor-pointer">
-    <input id="ratio-toggle" type="checkbox" checked class="sr-only peer">
+    <input id="ratio-logic-toggle" type="checkbox" checked class="sr-only peer">
     <div class="w-9 h-5 bg-surface-container-highest rounded-full peer peer-checked:bg-secondary/60 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-full"></div>
 </label>
 </div>
@@ -167,11 +167,11 @@
             <button id="undo-btn" class="flex items-center justify-center p-1.5 rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-variant transition-colors" title="Undo">
                 <span class="material-symbols-outlined text-lg">undo</span>
             </button>
-            <button id="reset-btn" class="px-3 py-1.5 rounded-lg bg-surface-container-highest text-[10px] font-bold text-on-surface hover:bg-surface-variant transition-colors border border-outline-variant/10">
-                Reset
+            <button id="reset-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-highest text-[10px] font-bold text-on-surface hover:bg-surface-variant transition-colors border border-outline-variant/10">
+                <span class="material-symbols-outlined text-[14px]">restore</span> Restore Checkpoint
             </button>
-            <button id="save-btn" class="px-3 py-1.5 rounded-lg bg-primary/10 text-[10px] font-bold text-primary hover:bg-primary/20 transition-colors border border-primary/20">
-                Save
+            <button id="save-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/10 text-[10px] font-bold text-primary hover:bg-primary/20 transition-colors border border-primary/20">
+                <span class="material-symbols-outlined text-[14px]">save</span> Create Checkpoint
             </button>
             <button id="default-btn" class="px-3 py-1.5 rounded-lg bg-surface-container-highest text-[10px] font-bold text-secondary hover:bg-surface-variant transition-colors border border-outline-variant/10">
                 Default

@@ -1,0 +1,174 @@
+{
+    "physicians": [
+        {
+            "name": "Gandhi",
+            "target": 8,
+            "color": "#87CEFA",
+            "full_day_ok": true,
+            "active": true,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": ""
+        },
+        {
+            "name": "Wesley",
+            "target": 8,
+            "color": "#CC5500",
+            "full_day_ok": true,
+            "active": true,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": ""
+        },
+        {
+            "name": "Khaja",
+            "target": 2,
+            "color": "#FFDAB9",
+            "full_day_ok": false,
+            "active": true,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": ""
+        },
+        {
+            "name": "Rendon",
+            "target": 2,
+            "color": "#FFC0CB",
+            "full_day_ok": false,
+            "active": true,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": ""
+        },
+        {
+            "name": "Reymunde",
+            "target": 2,
+            "color": "#800080",
+            "full_day_ok": false,
+            "active": true,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": ""
+        },
+        {
+            "name": "Dash",
+            "target": 2,
+            "color": "#008000",
+            "full_day_ok": false,
+            "active": true,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": ""
+        },
+        {
+            "name": "Govindu",
+            "target": 2,
+            "color": "#C8A2C8",
+            "full_day_ok": false,
+            "active": true,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": ""
+        },
+        {
+            "name": "Lee",
+            "target": 2,
+            "color": "#F0E68C",
+            "full_day_ok": false,
+            "active": true,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": ""
+        },
+        {
+            "name": "Koney",
+            "target": 2,
+            "color": "#98FF98",
+            "full_day_ok": false,
+            "active": true,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": ""
+        },
+        {
+            "name": "Aisenberg",
+            "target": 2,
+            "color": "#A9A9A9",
+            "full_day_ok": false,
+            "active": true,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": ""
+        },
+        {
+            "name": "Bhandari",
+            "target": 2,
+            "color": "#FFFF00",
+            "full_day_ok": false,
+            "active": true,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": ""
+        },
+        {
+            "name": "Huq",
+            "target": 2,
+            "color": "#4C6A92",
+            "full_day_ok": false,
+            "active": true,
+            "half_month": "All",
+            "preferred": "",
+            "avoid": "",
+            "override": ""
+        }
+    ],
+    "needs": {
+        "year": 2026,
+        "month": 5,
+        "daily_needs": {
+            "0": {
+                "AM": 1,
+                "PM": 0
+            },
+            "1": {
+                "AM": 2,
+                "PM": 0
+            },
+            "2": {
+                "AM": 0,
+                "PM": 1
+            },
+            "3": {
+                "AM": 2,
+                "PM": 1
+            },
+            "4": {
+                "AM": 1,
+                "PM": 0
+            },
+            "5": {
+                "AM": 0,
+                "PM": 0
+            },
+            "6": {
+                "AM": 0,
+                "PM": 0
+            }
+        },
+        "overrides": {},
+        "desperation_stage": 1,
+        "split_day": "15",
+        "ratio_logic": true
+    }
+}

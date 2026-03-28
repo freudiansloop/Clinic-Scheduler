@@ -74,11 +74,22 @@
         body { font-family: 'Inter', sans-serif; }
         .material-symbols-outlined {
           font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+          font-display: block;
+          visibility: hidden; /* Hide until font is ready */
+        }
+        .material-symbols-outlined.loaded {
+            visibility: visible;
         }
         .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #2d3449; border-radius: 10px; }
     </style>
+    <script>
+        // Simple helper to reveal icons after font load
+        document.fonts.ready.then(() => {
+            document.querySelectorAll('.material-symbols-outlined').forEach(el => el.classList.add('loaded'));
+        });
+    </script>
     {% block extra_css %}{% endblock %}
 </head>
 <body class="bg-surface text-on-surface custom-scrollbar overflow-hidden flex flex-col h-screen" data-mode="connect">

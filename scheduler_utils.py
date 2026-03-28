@@ -4,6 +4,7 @@ import calendar
 
 APP_NAME = "Clinic Physician Scheduler Pro"
 STATE_FILE = "physician_state.json"
+CLINIC_DATA_FILE = "clinic_data.json"
 
 # specific default colors
 DEFAULT_COLORS = {

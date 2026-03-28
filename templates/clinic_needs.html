@@ -42,11 +42,20 @@
                 <option value="2024" selected>2024</option>
                 <option value="2025">2025</option>
                 <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+                <option value="2031">2031</option>
+                <option value="2032">2032</option>
+                <option value="2033">2033</option>
+                <option value="2034">2034</option>
+                <option value="2035">2035</option>
             </select>
         </div>
         <div class="flex flex-col gap-1">
-            <label class="text-[10px] uppercase tracking-widest text-outline font-bold ml-1">Second Half Starts On:</label>
-            <select id="split-select" class="bg-surface-container-high border-none text-on-surface text-sm rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-primary/20 w-40">
+            <label class="text-[10px] uppercase tracking-widest text-outline font-bold ml-1">Second Half Start</label>
+            <select id="split-select" class="bg-surface-container-high border-none text-on-surface text-sm rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-primary/20 w-32">
                 <option value="Automatic" selected>Automatic</option>
                 <option value="14">14</option>
                 <option value="15">15</option>
@@ -56,12 +65,12 @@
         </div>
         
         <div class="flex items-end h-full mt-auto ml-auto gap-2">
-            <button id="reset-needs-btn" class="bg-surface-container-high text-primary border border-primary/20 hover:bg-surface-container-highest px-4 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-2">
+            <button id="reset-needs-btn" class="bg-surface-container-high text-primary border border-primary/20 hover:bg-primary/5 px-4 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
                 <span class="material-symbols-outlined text-sm">restart_alt</span>
                 Reset to Standard
             </button>
-            <button id="save-needs-btn" class="bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 px-4 py-1.5 rounded-lg text-xs font-bold transition-all shadow-lg shadow-primary/5">
-                Save Coverage Settings
+            <button id="save-needs-btn" class="bg-primary text-on-primary hover:bg-primary/90 px-4 py-1.5 rounded-lg text-xs font-bold transition-all shadow-lg shadow-primary/10">
+                Save Coverage
             </button>
         </div>
     </div>
@@ -70,17 +79,17 @@
     <div class="flex-grow flex flex-col min-h-0 bg-surface-container-low/30 rounded-2xl p-6 border border-outline-variant/5">
         <!-- Day Labels -->
         <div class="grid grid-cols-7 gap-3 mb-4 flex-none">
-            <div class="text-center py-2 text-secondary/60 text-[10px] uppercase font-black tracking-[0.25em]">Sunday</div>
-            <div class="text-center py-2 text-outline text-[10px] uppercase font-black tracking-[0.25em]">Monday</div>
-            <div class="text-center py-2 text-outline text-[10px] uppercase font-black tracking-[0.25em]">Tuesday</div>
-            <div class="text-center py-2 text-outline text-[10px] uppercase font-black tracking-[0.25em]">Wednesday</div>
-            <div class="text-center py-2 text-outline text-[10px] uppercase font-black tracking-[0.25em]">Thursday</div>
-            <div class="text-center py-2 text-outline text-[10px] uppercase font-black tracking-[0.25em]">Friday</div>
-            <div class="text-center py-2 text-secondary/60 text-[10px] uppercase font-black tracking-[0.25em]">Saturday</div>
+            <div class="text-center py-2 text-outline/40 text-[10px] uppercase font-black tracking-[0.25em]">Sunday</div>
+            <div class="text-center py-2 text-primary text-[10px] uppercase font-black tracking-[0.25em]">Monday</div>
+            <div class="text-center py-2 text-primary text-[10px] uppercase font-black tracking-[0.25em]">Tuesday</div>
+            <div class="text-center py-2 text-primary text-[10px] uppercase font-black tracking-[0.25em]">Wednesday</div>
+            <div class="text-center py-2 text-primary text-[10px] uppercase font-black tracking-[0.25em]">Thursday</div>
+            <div class="text-center py-2 text-primary text-[10px] uppercase font-black tracking-[0.25em]">Friday</div>
+            <div class="text-center py-2 text-outline/40 text-[10px] uppercase font-black tracking-[0.25em]">Saturday</div>
         </div>
         
         <!-- Interactive Grid -->
-        <div id="calendar-grid" class="calendar-grid flex-grow overflow-y-auto custom-scrollbar pr-1">
+        <div id="calendar-grid" class="calendar-grid flex-grow overflow-y-auto custom-scrollbar pr-1 content-center">
             <!-- Dynamic Content -->
         </div>
     </div>

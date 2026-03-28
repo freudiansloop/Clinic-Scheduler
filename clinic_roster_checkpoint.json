@@ -1,0 +1,145 @@
+[
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#87CEFA",
+        "full_day_ok": false,
+        "half_month": "1st",
+        "name": "Gandhi",
+        "override": "",
+        "preferred": "1",
+        "target": 8
+    },
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#CC5500",
+        "full_day_ok": true,
+        "half_month": "All",
+        "name": "Wesley",
+        "override": "",
+        "preferred": "",
+        "target": 8
+    },
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#FFDAB9",
+        "full_day_ok": false,
+        "half_month": "All",
+        "name": "Khaja",
+        "override": "",
+        "preferred": "5",
+        "target": 2
+    },
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#FFC0CB",
+        "full_day_ok": false,
+        "half_month": "All",
+        "name": "Rendon",
+        "override": "",
+        "preferred": "",
+        "target": 2
+    },
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#800080",
+        "full_day_ok": false,
+        "half_month": "All",
+        "name": "Reymunde",
+        "override": "",
+        "preferred": "10",
+        "target": 2
+    },
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#008000",
+        "full_day_ok": false,
+        "half_month": "All",
+        "name": "Dash",
+        "override": "",
+        "preferred": "",
+        "target": 2
+    },
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#C8A2C8",
+        "full_day_ok": false,
+        "half_month": "All",
+        "name": "Govindu",
+        "override": "",
+        "preferred": "",
+        "target": 2
+    },
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#F0E68C",
+        "full_day_ok": false,
+        "half_month": "All",
+        "name": "Lee",
+        "override": "",
+        "preferred": "",
+        "target": 2
+    },
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#98FF98",
+        "full_day_ok": false,
+        "half_month": "All",
+        "name": "Koney",
+        "override": "",
+        "preferred": "",
+        "target": 2
+    },
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#A9A9A9",
+        "full_day_ok": false,
+        "half_month": "All",
+        "name": "Aisenberg",
+        "override": "",
+        "preferred": "",
+        "target": 2
+    },
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#FFFF00",
+        "full_day_ok": false,
+        "half_month": "All",
+        "name": "Bhandari",
+        "override": "",
+        "preferred": "",
+        "target": 2
+    },
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#4C6A92",
+        "full_day_ok": false,
+        "half_month": "All",
+        "name": "Huq",
+        "override": "",
+        "preferred": "",
+        "target": 2
+    },
+    {
+        "active": true,
+        "avoid": "",
+        "color": "#ffffff",
+        "full_day_ok": false,
+        "half_month": "All",
+        "name": "New Physician",
+        "override": "",
+        "preferred": "",
+        "target": 4
+    }
+]
