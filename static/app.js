@@ -585,12 +585,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span class="text-xs font-bold text-primary">${d < 10 ? '0'+d : d}</span>
                     </div>
                     <div class="flex flex-col gap-1.5 mt-1">
-                        <div class="bg-surface-container-highest/30 rounded-lg p-1.5 border border-outline-variant/10 relative h-[54px] overflow-y-auto no-scrollbar">
+                        <div class="bg-surface-container-highest/30 rounded-lg p-1.5 border border-outline-variant/10 relative h-[68px] overflow-hidden">
                             <span class="absolute top-1 right-1.5 text-[9px] text-outline/60 font-black tracking-widest">AM</span>
                             <div class="flex flex-col gap-1 mt-1 pr-4">${amHtml || amStatusHtml}</div>
                         </div>
-                        <div class="mx-3 h-[2px] bg-secondary/40 rounded-full"></div>
-                        <div class="bg-surface-container-highest/10 rounded-lg p-1.5 border border-outline-variant/5 relative h-[54px] overflow-y-auto no-scrollbar">
+                        <div class="mx-3 h-[2px] bg-[#666666] rounded-full"></div>
+                        <div class="bg-surface-container-highest/10 rounded-lg p-1.5 border border-outline-variant/5 relative h-[68px] overflow-hidden">
                             <span class="absolute top-1 right-1.5 text-[9px] text-outline/40 font-black tracking-widest">PM</span>
                             <div class="flex flex-col gap-1 mt-1 pr-4">${pmHtml || pmStatusHtml}</div>
                         </div>
