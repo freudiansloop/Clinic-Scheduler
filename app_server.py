@@ -278,14 +278,86 @@ def import_schedule():
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 
+import threading
+import webbrowser
+import time
+import subprocess
+
 try:
-    from flaskwebgui import FlaskUI
-    HAS_DESKTOP_UI = True
+    import webview
+    HAS_WEBVIEW = True
 except ImportError:
-    HAS_DESKTOP_UI = False
-    import threading
-    import webbrowser
-    import time
+    HAS_WEBVIEW = False
+
+def show_rescue_popup(port):
+    """
+    Shows a user-friendly Tkinter popup if the standalone window fails.
+    Provides simple options for non-tech savvy users.
+    """
+    try:
+        import tkinter as tk
+        from tkinter import messagebox, filedialog
+        
+        root = tk.Tk()
+        root.withdraw() # Hide the main small window
+        
+        msg = (
+            "Unable to open in a standalone window.\n\n"
+            "The app tried to open in its own clean window, but your system is missing "
+            "a required component (Microsoft WebView2).\n\n"
+            "Don't worry! You can still use the scheduler by choosing an option below:\n\n"
+            "1. OPEN IN BROWSER: This will open the scheduler in your regular web browser "
+            "(like Chrome or Edge). It works exactly the same way.\n\n"
+            "2. SELECT BROWSER MANUALLY: If you are an advanced user, you can pick a specific "
+            "browser file (.exe) to force a standalone window.\n\n"
+            "3. FIX THIS: Download the missing Microsoft component to enable the standalone window next time."
+        )
+        
+        # We can't use simple messagebox for complex choices, let's make a tiny custom window
+        rescue_win = tk.Toplevel(root)
+        rescue_win.title("Clinic Scheduler - Launch Assistance")
+        rescue_win.geometry("500x450")
+        rescue_win.attributes("-topmost", True)
+        
+        tk.Label(rescue_win, text="Launch Assistance", font=("Helvetica", 14, "bold"), pady=10).pack()
+        tk.Label(rescue_win, text=msg, justify="left", wraplength=450, padx=20).pack()
+        
+        def open_browser():
+            webbrowser.open(f"http://127.0.0.1:{port}")
+            root.destroy()
+
+        def manual_select():
+            file_path = filedialog.askopenfilename(
+                title="Select your Browser Executable (e.g. chrome.exe or msedge.exe)",
+                filetypes=[("Executable Files", "*.exe")]
+            )
+            if file_path:
+                # Try to launch browser in app mode
+                try:
+                    subprocess.Popen([file_path, f"--app=http://127.0.0.1:{port}"])
+                    root.destroy()
+                except Exception as e:
+                    messagebox.showerror("Error", f"Could not launch browser: {e}")
+
+        def download_fix():
+            webbrowser.open("https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section")
+            messagebox.showinfo("Fix Instructions", "Please download the 'Evergreen Bootstrapper' or 'Evergreen Standalone Installer', run it, and then restart this app.")
+
+        btn_frame = tk.Frame(rescue_win, pady=20)
+        btn_frame.pack()
+        
+        tk.Button(btn_frame, text="Open in Browser (Recommended)", command=open_browser, width=30, bg="#e1f5fe").pack(pady=5)
+        tk.Button(btn_frame, text="Select Browser Manually (Advanced)", command=manual_select, width=30).pack(pady=5)
+        tk.Button(btn_frame, text="Help: Fix Standalone Window", command=download_fix, width=30).pack(pady=5)
+        tk.Button(btn_frame, text="Exit", command=root.destroy, width=30).pack(pady=5)
+        
+        rescue_win.protocol("WM_DELETE_WINDOW", root.destroy)
+        root.mainloop()
+
+    except Exception as e:
+        # Final desperate fallback if even Tkinter fails (very rare on Windows)
+        print(f"Rescue system failed: {e}")
+        webbrowser.open(f"http://127.0.0.1:{port}")
 
 @app.route("/api/schedule", methods=["GET"])
 def get_schedule():
@@ -295,23 +367,30 @@ def get_schedule():
             return jsonify({"success": True, "data": json.load(f)})
     return jsonify({"success": False, "error": "No schedule found"})
 
-def start_server():
-    if HAS_DESKTOP_UI:
-        print("Launching Clinic Scheduler Pro as Desktop Application...")
-        # width=1280, height=800 chosen for a good HD desktop experience
-        ui = FlaskUI(app=app, server="flask", width=1280, height=800)
-        ui.run()
+def start_server(port=5000):
+    print(f"Starting Clinic Scheduler Pro on http://127.0.0.1:{port}")
+    # Run Flask in a background thread
+    threading.Thread(target=lambda: app.run(host="127.0.0.1", port=port, debug=False, use_reloader=False), daemon=True).start()
+    
+    time.sleep(1.0) # Give server time to wake up
+
+    if HAS_WEBVIEW:
+        try:
+            print("Attempting to launch standalone window...")
+            webview.create_window(
+                "Clinic Scheduler Pro", 
+                f"http://127.0.0.1:{port}/",
+                width=1400,
+                height=900,
+                min_size=(1024, 768)
+            )
+            webview.start()
+        except Exception as e:
+            print(f"Standalone window failed: {e}")
+            show_rescue_popup(port)
     else:
-        print("flaskwebgui not found. Falling back to browser-tab mode...")
-        # Fallback to the previous threading/webbrowser method
-        def open_browser(port):
-            time.sleep(1.5)
-            webbrowser.open(f"http://127.0.0.1:{port}")
-        
-        port = 5000
-        print(f"Starting Clinic Scheduler Pro on http://127.0.0.1:{port}")
-        threading.Thread(target=open_browser, args=(port,), daemon=True).start()
-        app.run(host="127.0.0.1", port=port, debug=False, use_reloader=False)
+        print("webview library not found. Launching rescue popup...")
+        show_rescue_popup(port)
 
 if __name__ == "__main__":
     start_server()
