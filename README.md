@@ -2,9 +2,18 @@
 
 ## Overview
 
-**Clinic Physician Scheduler Pro** is a Python-based desktop application (GUI) designed to automate the complex process of assigning physician shifts. It uses a custom algorithm to balance requested targets, specific scheduling needs per day (AM/PM), personal preferences, and constraints.
+**Clinic Physician Scheduler Pro** is a modern scheduling automation tool designed specifically for medical clinics. It utilizes a sophisticated algorithm to balance physician shifts against monthly targets, personal preferences, and strict constraints.
 
-**Current Version:** V5 (`Scheduler v5.py`)
+**Current Version:** v2.0.0 (Flask WebUI)
+
+### 🚀 Now with Professional WebUI
+The legacy Tkinter desktop interface has been replaced with a high-performance **Flask-powered Web Interface**.
+- **Standalone Mode**: The application is now bundled as a "one-click" standalone executable (`.exe`) that runs in its own dedicated, clutter-free window.
+- **Improved UX**: Dynamic drag-and-drop, real-time schedule highlights, and a much more intuitive multi-tab workflow.
+- **Legacy Compatibility**: Fully supports Excel imports and exports from previous versions.
+
+## 📥 Downloads
+You can find the standalone, zero-dependency executable in the [GitHub Releases](https://github.com/freudiansloop/Clinic-Scheduler/releases) section. Just download `Clinic_Scheduler_Pro.exe` and double-click to run!
 
 ## 🧠 Scheduling Algorithm Logic
 
