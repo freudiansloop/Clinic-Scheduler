@@ -1,141 +1,141 @@
 {
     "physicians": [
         {
-            "name": "Gandhi",
-            "target": 8,
+            "active": true,
+            "avoid": "",
             "color": "#87CEFA",
             "full_day_ok": true,
-            "active": true,
             "half_month": "All",
+            "name": "Gandhi",
+            "override": "",
             "preferred": "",
-            "avoid": "",
-            "override": ""
+            "target": 8
         },
         {
-            "name": "Wesley",
-            "target": 8,
+            "active": true,
+            "avoid": "",
             "color": "#CC5500",
             "full_day_ok": true,
-            "active": true,
             "half_month": "All",
+            "name": "Wesley",
+            "override": "",
             "preferred": "",
-            "avoid": "",
-            "override": ""
+            "target": 8
         },
         {
-            "name": "Khaja",
-            "target": 2,
+            "active": true,
+            "avoid": "",
             "color": "#FFDAB9",
             "full_day_ok": false,
-            "active": true,
             "half_month": "All",
+            "name": "Khaja",
+            "override": "",
             "preferred": "",
-            "avoid": "",
-            "override": ""
+            "target": 2
         },
         {
-            "name": "Rendon",
-            "target": 2,
+            "active": true,
+            "avoid": "",
             "color": "#FFC0CB",
             "full_day_ok": false,
-            "active": true,
             "half_month": "All",
+            "name": "Rendon",
+            "override": "",
             "preferred": "",
-            "avoid": "",
-            "override": ""
+            "target": 2
         },
         {
-            "name": "Reymunde",
-            "target": 2,
+            "active": true,
+            "avoid": "",
             "color": "#800080",
             "full_day_ok": false,
-            "active": true,
             "half_month": "All",
+            "name": "Reymunde",
+            "override": "",
             "preferred": "",
-            "avoid": "",
-            "override": ""
+            "target": 2
         },
         {
-            "name": "Dash",
-            "target": 2,
+            "active": true,
+            "avoid": "",
             "color": "#008000",
             "full_day_ok": false,
-            "active": true,
             "half_month": "All",
+            "name": "Dash",
+            "override": "",
             "preferred": "",
-            "avoid": "",
-            "override": ""
+            "target": 2
         },
         {
-            "name": "Govindu",
-            "target": 2,
+            "active": true,
+            "avoid": "",
             "color": "#C8A2C8",
             "full_day_ok": false,
-            "active": true,
             "half_month": "All",
+            "name": "Govindu",
+            "override": "",
             "preferred": "",
-            "avoid": "",
-            "override": ""
+            "target": 2
         },
         {
-            "name": "Lee",
-            "target": 2,
+            "active": true,
+            "avoid": "",
             "color": "#F0E68C",
             "full_day_ok": false,
-            "active": true,
             "half_month": "All",
+            "name": "Lee",
+            "override": "",
             "preferred": "",
-            "avoid": "",
-            "override": ""
+            "target": 2
         },
         {
-            "name": "Koney",
-            "target": 2,
+            "active": true,
+            "avoid": "",
             "color": "#98FF98",
             "full_day_ok": false,
-            "active": true,
             "half_month": "All",
+            "name": "Koney",
+            "override": "",
             "preferred": "",
-            "avoid": "",
-            "override": ""
+            "target": 2
         },
         {
-            "name": "Aisenberg",
-            "target": 2,
+            "active": true,
+            "avoid": "",
             "color": "#A9A9A9",
             "full_day_ok": false,
-            "active": true,
             "half_month": "All",
+            "name": "Aisenberg",
+            "override": "",
             "preferred": "",
-            "avoid": "",
-            "override": ""
+            "target": 2
         },
         {
-            "name": "Bhandari",
-            "target": 2,
+            "active": true,
+            "avoid": "",
             "color": "#FFFF00",
             "full_day_ok": false,
-            "active": true,
             "half_month": "All",
+            "name": "Bhandari",
+            "override": "",
             "preferred": "",
-            "avoid": "",
-            "override": ""
+            "target": 2
         },
         {
-            "name": "Huq",
-            "target": 2,
+            "active": true,
+            "avoid": "",
             "color": "#4C6A92",
             "full_day_ok": false,
-            "active": true,
             "half_month": "All",
+            "name": "Huq",
+            "override": "",
             "preferred": "",
-            "avoid": "",
-            "override": ""
+            "target": 2
         }
     ],
     "needs": {
         "year": 2026,
-        "month": 5,
+        "month": 4,
         "daily_needs": {
             "0": {
                 "AM": 1,
@@ -168,7 +168,7 @@
         },
         "overrides": {},
         "desperation_stage": 1,
-        "split_day": "15",
+        "split_day": "Automatic",
         "ratio_logic": true
     }
 }
