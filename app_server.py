@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 from flask import Flask, render_template, jsonify, request
 from scheduler_models import Physician
@@ -7,8 +8,12 @@ from scheduler_utils import get_app_path, STATE_FILE, CLINIC_DATA_FILE
 
 SETTINGS_FILE = "settings_state.json"
 
-app = Flask(__name__)
-
+if getattr(sys, 'frozen', False):
+    template_folder = os.path.join(sys._MEIPASS, 'templates')
+    static_folder = os.path.join(sys._MEIPASS, 'static')
+    app = Flask(__name__, template_folder=template_folder, static_folder=static_folder)
+else:
+    app = Flask(__name__)
 # --- DATA HELPERS ---
 
 def get_unified_path():
@@ -273,6 +278,15 @@ def import_schedule():
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 
+try:
+    from flaskwebgui import FlaskUI
+    HAS_DESKTOP_UI = True
+except ImportError:
+    HAS_DESKTOP_UI = False
+    import threading
+    import webbrowser
+    import time
+
 @app.route("/api/schedule", methods=["GET"])
 def get_schedule():
     path = os.path.join(get_app_path(), "output_schedule.json")
@@ -281,8 +295,23 @@ def get_schedule():
             return jsonify({"success": True, "data": json.load(f)})
     return jsonify({"success": False, "error": "No schedule found"})
 
-def start_server(port=5000):
-    app.run(host="127.0.0.1", port=port, debug=False, use_reloader=False)
+def start_server():
+    if HAS_DESKTOP_UI:
+        print("Launching Clinic Scheduler Pro as Desktop Application...")
+        # width=1280, height=800 chosen for a good HD desktop experience
+        ui = FlaskUI(app=app, server="flask", width=1280, height=800)
+        ui.run()
+    else:
+        print("flaskwebgui not found. Falling back to browser-tab mode...")
+        # Fallback to the previous threading/webbrowser method
+        def open_browser(port):
+            time.sleep(1.5)
+            webbrowser.open(f"http://127.0.0.1:{port}")
+        
+        port = 5000
+        print(f"Starting Clinic Scheduler Pro on http://127.0.0.1:{port}")
+        threading.Thread(target=open_browser, args=(port,), daemon=True).start()
+        app.run(host="127.0.0.1", port=port, debug=False, use_reloader=False)
 
 if __name__ == "__main__":
     start_server()
